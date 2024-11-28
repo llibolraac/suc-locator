@@ -28,7 +28,7 @@
 
         <div class="bg-white p-4 shadow-sm rounded">
             <div class="text-end">
-                <a href="{{ route('locator.create') }}" class="btn btn-success">Add new HEI</a>
+                <a href="{{ route('locator.create') }}" class="btn btn-primary">Add new HEI</a>
             </div>
 
             <div class="table-responsive">
@@ -93,7 +93,8 @@
             @endphp
             @endforeach
 
-            <x-maps-leaflet :markers="$markers">hehe</x-maps-leaflet>
+            <x-maps-leaflet :markers="$markers" :zoomLevel="2" :centerPoint="['lat' => 52.16, 'long' => 5]">hehe
+            </x-maps-leaflet>
         </div>
     </div>
     {{-- Ends Here --}}
