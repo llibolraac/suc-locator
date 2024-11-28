@@ -32,6 +32,8 @@ class CollegeController extends Controller
      */
     public function store(CollegeRequest $request)
     {
+
+        //Create New College Record
         College::query()->create([
             'name' => $request->name,
             'address' => $request->address,
@@ -40,7 +42,7 @@ class CollegeController extends Controller
             'website' => $request->website,
             'contact_number' => $request->contact_number,
         ]);
-        return redirect('/locator');
+        return redirect('/locator/create')->with('message', 'Successfully Created a New College Record.');;
     }
 
     /**
@@ -56,6 +58,8 @@ class CollegeController extends Controller
      */
     public function edit(string $id)
     {
+
+        //Edit College Record
         $college = College::query()->find($id);
         return view('locator.edit', [
             'college' => $college,
@@ -67,9 +71,8 @@ class CollegeController extends Controller
      */
     public function update(CollegeRequest $request, string $id)
     {
-
+        //Update form Here
         $college = College::query()->find($id);
-
         $college->update([
             'name' => $request->name,
             'address' => $request->address,
@@ -87,6 +90,7 @@ class CollegeController extends Controller
      */
     public function destroy(string $id)
     {
+        //Delete College Record
         $college = College::query()->find($id)->delete();
         return redirect()->back();
     }
